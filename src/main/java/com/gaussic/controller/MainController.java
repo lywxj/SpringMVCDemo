@@ -26,26 +26,26 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin/users")
-    public String getUsers(ModelMap modelMap){
+    public String getUsers(ModelMap modelMap) {
         // 查询user表中所有记录
         List<User> userList = userRepository.findAll();
 
         // 将所有记录传递给要返回的jsp页面，放在userList当中
         modelMap.addAttribute("userList", userList);
-        modelMap.addAttribute("fuck", "fuckvalue");
+
         // 返回pages目录下的admin/users.jsp页面
         return "admin/users";
     }
 
     // get请求，访问添加用户 页面
     @RequestMapping(value = "/admin/users/add")
-    public String addUser(){
+    public String addUser() {
         return "admin/addUser";
     }
 
     // post请求，处理添加用户请求，并重定向到用户管理页面
     @RequestMapping(value = "/admin/users/addP", method = RequestMethod.POST)
-    public String addUserPost(@ModelAttribute("user") User user){
+    public String addUserPost(@ModelAttribute("user") User user) {
         // 注意此处，post请求传递过来的是一个UserEntity对象，里面包含了该用户的信息
         // 通过@ModelAttribute()注解可以获取传递过来的'user'，并创建这个对象
 
@@ -63,7 +63,7 @@ public class MainController {
     // @PathVariable可以收集url中的变量，需匹配的变量用{}括起来
     // 例如：访问 localhost:8080/admin/users/show/1 ，将匹配 id = 1
     @RequestMapping(value = "/admin/users/show/{id}")
-    public String showUser(@PathVariable("id") int userId, ModelMap modelMap){
+    public String showUser(@PathVariable("id") int userId, ModelMap modelMap) {
         // 找到userId所表示的用户
         User user = userRepository.findOne(userId);
 
@@ -74,7 +74,7 @@ public class MainController {
 
     // 更新用户信息页面
     @RequestMapping(value = "/admin/users/update/{id}")
-    public String updateUser(@PathVariable("id") int userId, ModelMap modelMap){
+    public String updateUser(@PathVariable("id") int userId, ModelMap modelMap) {
         // 找到userId所表示的用户
         User user = userRepository.findOne(userId);
 
@@ -85,7 +85,7 @@ public class MainController {
 
     // 更新用户信息post
     @RequestMapping(value = "/admin/users/updateP", method = RequestMethod.POST)
-    public String updateUserPost(@ModelAttribute("userP") User user){
+    public String updateUserPost(@ModelAttribute("userP") User user) {
         // 更新用户信息
         userRepository.updateUser(user.getNickname(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getId());
         // 立即刷新
