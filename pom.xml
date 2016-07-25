@@ -79,7 +79,8 @@
         </plugins>
     </build>
     <properties>
-        <spring.version>4.2.6.RELEASE</spring.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
+        <spring.version>4.2.6.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>
