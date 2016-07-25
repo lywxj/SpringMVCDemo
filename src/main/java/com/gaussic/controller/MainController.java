@@ -2,7 +2,6 @@ package com.gaussic.controller;
 
 import com.gaussic.model.User;
 import com.gaussic.repository.UserRepository;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
